@@ -6,13 +6,73 @@
   height: 100%;
   z-index: -1;
   overflow: hidden;
+  background: var(--dark-color);
+
+  .ambient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(110, 69, 226, 0.015) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 126, 95, 0.01) 0%, transparent 50%),
+      linear-gradient(180deg, var(--dark-color) 0%, rgba(8, 8, 12, 1) 100%);
+  }
+
+  .grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 100px 100px;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(0.5px);
+    
+    &:nth-child(2n) {
+      background: radial-gradient(circle, rgba(110, 69, 226, 0.2) 0%, transparent 60%);
+    }
+    
+    &:nth-child(3n) {
+      background: radial-gradient(circle, rgba(255, 126, 95, 0.15) 0%, transparent 60%);
+    }
+  }
 }
 
-.particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
+// Responsive optimizations
+@media (max-width: 768px) {
+  .animated-background {
+    .particle {
+      &:nth-child(n+4) {
+        display: none; // Show fewer particles on mobile
+      }
+    }
+
+    .grid-overlay {
+      background-size: 60px 60px;
+      opacity: 0.2;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-background {
+    .particle {
+      animation: none !important;
+      opacity: 0.1 !important;
+      transform: none !important;
+    }
+  }
 }

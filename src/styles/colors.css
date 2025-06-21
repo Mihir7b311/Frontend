@@ -1,12 +1,42 @@
+/* Replace everything in src/styles/colors.css with: */
 :root {
+  /* Primary Black Theme Colors */
   --primary-color: #6e45e2;
   --secondary-color: #88d3ce;
   --accent-color: #ff7e5f;
-  --dark-color: #1a1a2e;
-  --light-color: #f8f9fa;
-  --success-color: #4caf50;
-  --warning-color: #ff9800;
-  --danger-color: #f44336;
-  --text-color: #e6e6e6;
-  --text-dark: #333;
+  
+  /* Enhanced Black Backgrounds */
+  --dark-color: #000000;
+  --dark-secondary: #0a0a0a;
+  --dark-tertiary: #111111;
+  --dark-card: #181818;
+  --dark-elevated: #1f1f1f;
+  
+  /* Glass Effect Colors */
+  --glass-bg: rgba(0, 0, 0, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+  
+  /* Text Colors */
+  --text-color: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #666666;
+  --text-dark: #333333;
+  
+  /* Status Colors */
+  --success-color: #00ff88;
+  --warning-color: #ffaa00;
+  --danger-color: #ff4444;
+  --info-color: #00aaff;
+  
+  /* Glow Effects */
+  --glow-primary: rgba(110, 69, 226, 0.3);
+  --glow-accent: rgba(255, 126, 95, 0.3);
+  --glow-success: rgba(0, 255, 136, 0.3);
+  --glow-danger: rgba(255, 68, 68, 0.3);
+  
+  /* Borders */
+  --border-primary: rgba(110, 69, 226, 0.2);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(255, 126, 95, 0.2);
 }

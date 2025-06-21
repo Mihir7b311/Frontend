@@ -1,7 +1,7 @@
 .glow-button {
-  padding: 12px 24px;
+  padding: 1rem 2rem;
   background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  color: white;
+  color: var(--text-color);
   border: none;
   border-radius: 50px;
   font-size: 1rem;
@@ -9,14 +9,79 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(110, 69, 226, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 10px 30px var(--glow-primary),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--border-primary);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    transition: left 0.6s ease;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      var(--primary-color), 
+      var(--accent-color), 
+      var(--primary-color));
+    background-size: 200% 200%;
+    z-index: -1;
+    border-radius: 50px;
+    opacity: 0;
+    animation: gradientFlow 3s ease infinite;
+  }
 
   &:hover {
-    box-shadow: 0 0 20px rgba(110, 69, 226, 0.8);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+      0 20px 50px var(--glow-primary),
+      0 0 60px var(--glow-accent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+
+    &::after {
+      opacity: 0.8;
+    }
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: translateY(-1px) scale(1.02);
+    transition: all 0.1s ease;
+  }
+
+  &:disabled {
+    background: var(--text-muted);
+    color: var(--dark-color);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 }
